@@ -1,7 +1,7 @@
 
 <?php
 
-use App\Models\berita;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Route Home
@@ -30,18 +30,5 @@ Route::get('/kontak', function () {
 });
 
 // Route Berita
-Route::get('/berita', function () {
-
-    return view('berita', [
-        "title" => "Berita",
-        "beritas" => berita::ambilberita(),
-    ]);
-});
-
-Route::get('/berita/{slug}', function ($slug) {
-
-    return view('beritatunggal', [
-        "title" => berita::gettitle($slug),
-        "berita" => berita::getBerita($slug),
-    ]);
-});
+Route::get('/berita',[UserController::class,'tampilberita']);
+Route::get('/berita/{slug}',[UserController::class,'getberita']);
