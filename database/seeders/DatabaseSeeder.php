@@ -3,13 +3,17 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\berita;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
-
+    
     /**
      * Seed the application's database.
      */
@@ -17,9 +21,23 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+
+        // DB::table('users')->insert([
+        //     'name' => 'ahmad',
+        //     'email' => 'ahmadd@gmail.com',
+        //     'password' => Hash::make('12345678'),
+        // ]);
+        
+        // DB::table('beritas')->insert([
+        //     'judul' => 'Superman Makan Mie Ayam',
+        //     'slug' => 'superman-makan-mie-ayam',
+        //     'penulis' => 'abdul malik ahmad',
+        //     'konten' => 'superman makan mie ayam pak yanto enak sekali',
+        // ]);
+        berita::factory()->count(5)->create();
     }
 }
